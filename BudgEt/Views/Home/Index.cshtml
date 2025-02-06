@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Planner</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        label, input, button {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .result {
+            margin-top: 10px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .negative {
+            color: red;
+        }
+        .expense-list {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Budget Planner</h2>
+        <label for="income">Income (R):</label>
+        <input type="number" id="income" placeholder="Enter income">
+        
+        <h3>Expenses</h3>
+        <label for="expense-desc">Description:</label>
+        <input type="text" id="expense-desc" placeholder="Enter expense description">
+        
+        <label for="expense-amount">Amount (R):</label>
+        <input type="number" id="expense-amount" placeholder="Enter expense amount">
+        
+        <button onclick="addExpense()">Add Expense</button>
+        <button onclick="clearExpenses()">Clear Expenses</button>
+        
+        <ul id="expense-list" class="expense-list"></ul>
+        
+        <button onclick="calculateBudget()">Calculate Balance</button>
+        
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        let expenses = [];
+
+        function addExpense() {
+            let desc = document.getElementById("expense-desc").value;
+            let amount = parseFloat(document.getElementById("expense-amount").value) || 0;
+            
+            if (desc && amount > 0) {
+                expenses.push({ desc, amount });
+                updateExpenseList();
+                document.getElementById("expense-desc").value = "";
+                document.getElementById("expense-amount").value = "";
+            }
+        }
+
+        function clearExpenses() {
+            expenses = [];
+            updateExpenseList();
+        }
+
+        function updateExpenseList() {
+            let list = document.getElementById("expense-list");
+            list.innerHTML = "";
+            expenses.forEach((expense, index) => {
+                let li = document.createElement("li");
+                li.innerText = `${expense.desc}: R${expense.amount.toFixed(2)}`;
+                list.appendChild(li);
+            });
+        }
+
+        function calculateBudget() {
+            let income = parseFloat(document.getElementById("income").value) || 0;
+            let totalExpenses = expenses.reduce((sum, exp) => sum + exp.amount, 0);
+            let balance = income - totalExpenses;
+            
+            let resultElement = document.getElementById("result");
+            resultElement.innerText = `Balance: R${balance.toFixed(2)}`;
+            resultElement.className = balance < 0 ? "result negative" : "result";
+        }
+    </script>
+</body>
+</html>
