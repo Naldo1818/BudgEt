@@ -1,24 +1,120 @@
-html {
-    font-size: 14px;
-  
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
+/* Body & General */
 body {
-    margin-bottom: 60px;
- 
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #343a40 !important;
+}
+
+    .navbar .navbar-brand {
+        color: #ffffff !important;
+        font-weight: bold;
+    }
+
+    .navbar .navbar-nav .nav-link {
+        color: #ffffff !important;
+    }
+
+/* Cards */
+.card {
+    border-radius: 15px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+    .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Summary Section */
+    .card .row h6 {
+        color: #6c757d;
+    }
+
+#total-income {
+    color: #28a745;
+    font-weight: bold;
+}
+
+#total-expenses {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+#balance {
+    color: #007bff;
+    font-weight: bold;
+}
+
+/* Transaction Section */
+#transaction-type, #transaction-category, #transaction-amount, #transaction-description {
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+}
+
+#transaction-type {
+    background-color: #e9ecef;
+}
+
+#transaction-category {
+    background-color: #f8f9fa;
+}
+
+#transaction-amount, #transaction-description {
+    background-color: #ffffff;
+}
+
+button.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    font-weight: bold;
+}
+
+    button.btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+
+/* Income & Expense Lists */
+.list-group-item {
+    border-radius: 8px;
+    margin-bottom: 5px;
+    padding: 0.5rem 1rem;
+    background-color: #f1f3f5;
+    border: 1px solid #dee2e6;
+}
+
+    .list-group-item .small {
+        font-style: italic;
+        color: #6c757d;
+    }
+
+/* Charts */
+canvas {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 10px;
+}
+
+/* Month Selector Card */
+#month {
+    border-radius: 8px;
+}
+
+/* Headings */
+h4, h5, h6 {
+    color: #495057;
+    font-weight: 600;
+}
+
+/* Optional: Add different colors for income & expense cards */
+#income-sections .card {
+    background-color: #e6f7e6;
+}
+
+#expense-sections .card {
+    background-color: #fde6e6;
 }

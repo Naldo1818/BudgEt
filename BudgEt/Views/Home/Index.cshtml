@@ -4,6 +4,7 @@
 
 <div class="row mb-4">
 
+    <!-- Month Selector -->
     <div class="col-md-3">
         <div class="card p-3 shadow-sm">
             <h5>Select Month</h5>
@@ -11,6 +12,7 @@
         </div>
     </div>
 
+    <!-- Summary -->
     <div class="col-md-9">
         <div class="card p-3 shadow-sm">
             <div class="row text-center">
@@ -30,6 +32,51 @@
         </div>
     </div>
 
+</div>
+
+<!-- Add Transaction Section -->
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="card p-3 shadow-sm">
+            <h5>Add Transaction</h5>
+            <div class="row g-2">
+
+                <div class="col-md-3">
+                    <select id="transaction-type" class="form-select">
+                        <option value="income">Income</option>
+                        <option value="expense">Expense</option>
+                    </select>
+                </div>
+
+                <div class="col-md-3">
+                    <select id="transaction-category" class="form-select"></select>
+                </div>
+
+                <div class="col-md-3">
+                    <input type="number"
+                           id="transaction-amount"
+                           class="form-control"
+                           placeholder="Amount (R)">
+                </div>
+
+                <!-- DESCRIPTION FIELD ONLY FOR EXPENSE -->
+                <div class="col-md-3" id="description-container" style="display:none;">
+                    <input type="text"
+                           id="transaction-description"
+                           class="form-control"
+                           placeholder="Expense description">
+                </div>
+
+                <div class="col-md-3">
+                    <button class="btn btn-primary w-100"
+                            onclick="addTransactionFromSection()">
+                        Add Transaction
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
 </div>
 
 <hr />
@@ -59,3 +106,8 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="~/js/financial-dashboard.js" asp-append-version="true"></script>
+}
